@@ -1,0 +1,13 @@
+﻿<Page x:Class="UserAuthApp.RegisterPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="RegisterPage">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Kayıt Ol" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtUsername" PlaceholderText="Kullanıcı Adı" Margin="0,5"/>
+            <PasswordBox x:Name="txtPassword" PlaceholderText="Şifre" Margin="0,5"/>
+            <Button Content="Kayıt Ol" Click="BtnRegister_Click" Margin="0,10"/>
+        </StackPanel>
+    </Grid>
+</Page>

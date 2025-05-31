@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="0ff27dea30705656455da4bd951281f2.jpg" />
+    <None Remove="back.jpeg.jpg" />
+    <None Remove="foto.jpeg.avif" />
+    <None Remove="hap.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="0ff27dea30705656455da4bd951281f2.jpg" />
+    <Resource Include="back.jpeg.jpg" />
+    <Resource Include="foto.jpeg.avif" />
+    <Resource Include="hap.webp" />
+  </ItemGroup>
+
+</Project>
