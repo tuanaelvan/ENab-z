@@ -30,7 +30,7 @@ namespace ENabız
             {
                 if (!textBoxControl.IsLoaded)
                 {
-                    // Ensure that the events are not added multiple times
+                    // Ensure that the events are not added multiple times.
                     textBoxControl.Loaded -= TextBoxControl_Loaded;
                     textBoxControl.Loaded += TextBoxControl_Loaded;
                 }

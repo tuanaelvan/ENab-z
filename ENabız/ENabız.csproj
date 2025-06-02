@@ -13,6 +13,7 @@
     <None Remove="back.jpeg.jpg" />
     <None Remove="foto.jpeg.avif" />
     <None Remove="hap.webp" />
+    <None Remove="pink1.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
     <Resource Include="back.jpeg.jpg" />
     <Resource Include="foto.jpeg.avif" />
     <Resource Include="hap.webp" />
+    <Resource Include="pink1.png" />
   </ItemGroup>
 
 </Project>

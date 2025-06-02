@@ -13,16 +13,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using System.Windows;
+using System.Windows.Controls;
+using ENabız;
+
 namespace ENabız
 {
-    /// <summary>
-    /// Interaction logic for LoginPage.xaml
-    /// </summary>
-    public partial class LoginPage : Page
+    public partial class LoginPage : Window
     {
         public LoginPage()
         {
             InitializeComponent();
         }
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+
+        }
+
     }
 }
+
