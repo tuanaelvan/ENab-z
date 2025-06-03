@@ -58,7 +58,6 @@
         </Viewbox>
 
         <!-- Frame: Sayfa yönlendirme için -->
-        <Frame x:Name="MainFrame" Grid.ColumnSpan="8" Panel.ZIndex="999" Visibility="Visible" Navigated="MainFrame_Navigated" />
 
     </Grid>
 </Window>

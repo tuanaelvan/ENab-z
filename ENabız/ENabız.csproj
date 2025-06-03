@@ -12,16 +12,22 @@
     <None Remove="0ff27dea30705656455da4bd951281f2.jpg" />
     <None Remove="back.jpeg.jpg" />
     <None Remove="foto.jpeg.avif" />
+    <None Remove="freepik__upload__51298.png" />
     <None Remove="hap.webp" />
     <None Remove="pink1.png" />
+    <None Remove="profile-2398782_1280.png" />
+    <None Remove="tnabiz.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="0ff27dea30705656455da4bd951281f2.jpg" />
     <Resource Include="back.jpeg.jpg" />
     <Resource Include="foto.jpeg.avif" />
+    <Resource Include="freepik__upload__51298.png" />
     <Resource Include="hap.webp" />
     <Resource Include="pink1.png" />
+    <Resource Include="profile-2398782_1280.png" />
+    <Resource Include="tnabiz.png" />
   </ItemGroup>
 
 </Project>
