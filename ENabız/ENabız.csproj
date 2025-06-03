@@ -23,6 +23,7 @@
     <None Remove="hap.webp" />
     <None Remove="hasta.png" />
     <None Remove="mal.png" />
+    <None Remove="medical-advice.png" />
     <None Remove="pato.png" />
     <None Remove="pink1.png" />
     <None Remove="pink2.png" />
@@ -53,6 +54,7 @@
     <Resource Include="hap.webp" />
     <Resource Include="hasta.png" />
     <Resource Include="mal.png" />
+    <Resource Include="medical-advice.png" />
     <Resource Include="pato.png" />
     <Resource Include="pink1.png" />
     <Resource Include="pink2.png" />

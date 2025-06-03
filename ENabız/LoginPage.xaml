@@ -111,58 +111,90 @@
             <ImageBrush ImageSource="/freepik__upload__51298.png"
                 Stretch="UniformToFill"/>
         </Grid.Background>
-        
+
         <!-- Grid satır ve sütun tanımlamaları -->
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <!-- Üst bar yüksekliği -->
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="5*"/>
             <!-- Geri kalan alan -->
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <!-- Sol menü genişliği -->
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
             <!-- Ana içerik alanı -->
         </Grid.ColumnDefinitions>
 
         <!-- Üst bar (logo + anasayfa + arama) -->
-        <DockPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Top" Background="White" Height="100">
+        <DockPanel Grid.ColumnSpan="2" VerticalAlignment="Center" Background="White" Height="100" LastChildFill="False">
 
             <!-- Logo (hover’lı) -->
             <Image Source="/Pink_and_Red_Shapes_Community___Non-Profit_Logo-removebg-preview.png"
-                   Width="100" Height="100"
-                   Style="{StaticResource HoverableImageStyle}"
-                   DockPanel.Dock="Left" Opacity="1"/>
+           Width="100" Height="100"
+           Style="{StaticResource HoverableImageStyle}"
+           DockPanel.Dock="Left" Opacity="1"/>
 
             <!-- Anasayfa simgesi -->
             <Image Source="/anasayfa.png"
-                   Width="50" Height="30"
-                   Margin="10,0"
-                   VerticalAlignment="Center"
-                   DockPanel.Dock="Left"/>
+           Width="50" Height="50"
+           Margin="10,0"
+           VerticalAlignment="Center"
+           DockPanel.Dock="Left"/>
 
             <!-- Arama kutusu + buton -->
             <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center">
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Right"
+                Margin="20,0,0,0">
                 <TextBox Width="300" Height="40"
-                         TextAlignment="Left"
-                         VerticalContentAlignment="Center"
-                         helpers:TextBoxHelper.Placeholder="Bir şeyler ara..."
-                         Style="{StaticResource RoundedTextBoxStyle}"
-                         Name="SearchBox"/>
+                 TextAlignment="Left"
+                 VerticalContentAlignment="Center"
+                 helpers:TextBoxHelper.Placeholder="Merhaba, size nasıl yardım edebilirim?"
+                 Style="{StaticResource RoundedTextBoxStyle}"
+                 Name="SearchBox"/>
                 <Button Content="🔍"
-                         Width="50" Height="40" Margin="10,0,0,0"
-                         Style="{StaticResource AnimatedButtonStyle}"/>
-
+                 Width="50" Height="40" Margin="10,0,0,0"
+                 Style="{StaticResource AnimatedButtonStyle}"/>
             </StackPanel>
+
+            <!-- Sağdaki logolu buton -->
+            <Button Width="180" Height="40" Padding="5"
+            DockPanel.Dock="Right"
+            VerticalAlignment="Center"
+            Background="#FFEDCBE1"
+            Foreground="White"
+            FontWeight="Bold"
+            BorderThickness="0"
+            Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        CornerRadius="12"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image Source="/medical-advice.png" Width="24" Height="24" Margin="0,0,10,0">
+                        <Image.OpacityMask>
+                            <ImageBrush ImageSource="/medical-advice.png"/>
+                        </Image.OpacityMask>
+                    </Image>
+                    <TextBlock VerticalAlignment="Center" FontSize="14" Text="T-NABIZ İLETİŞİM&#x0a;0412 345 67 89"/>
+                </StackPanel>
+            </Button>
 
         </DockPanel>
 
+
+
         <!-- Sol Menü -->
-        <StackPanel Grid.Row="1" Grid.Column="0" Width="220" Background="#F8F9FA" Orientation="Vertical" HorizontalAlignment="Left">
+        <StackPanel Grid.Row="1" Width="220" Background="#F8F9FA" Orientation="Vertical" HorizontalAlignment="Center" Grid.RowSpan="2">
             <ItemsControl>
                 <ItemsControl.Resources>
                     <Style TargetType="StackPanel">
@@ -236,8 +268,8 @@
             </ItemsControl>
         </StackPanel>
         <!-- Ana içerik -->
-        <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform">
-            <Grid Width="800" Height="450">
+        <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform" Grid.RowSpan="2">
+            <Grid Width="800" Height="511">
 
                 <!-- Profil resmi -->
                 <Image Source="/profile-2398782_1280.png"
@@ -260,44 +292,40 @@
                              Margin="150,180,150,0"
                              VerticalAlignment="Top"
                              Height="60">
-                    <TextBlock Text="YAŞ&#x0a;21" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="KİLO&#x0a;70 kg" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="BOY&#x0a;165 cm" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="KAN GRUBU&#x0a;0 Rh+" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="YAŞ&#x0a;21" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="KİLO&#x0a;70 kg" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="BOY&#x0a;165 cm" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="KAN GRUBU&#x0a;0 Rh+" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                 </UniformGrid>
 
                 <!-- Güncelle -->
-                <Button Content="Güncelle" Background="Transparent" BorderBrush="Transparent"
-                        Foreground="Blue" FontStyle="Italic"
-                        HorizontalAlignment="Center" VerticalAlignment="Top"
-                        Margin="0,250,0,0" Width="70"
-                        Click="Button_Click"/>
+
 
                 <!-- VKİ -->
                 <TextBlock Text="VÜCUT KİTLE İNDEKSİ&#x0a;25.71"
                            HorizontalAlignment="Center" VerticalAlignment="Top"
-                           Margin="0,280,0,0" Width="124" TextAlignment="Center"/>
+                           Margin="0,280,0,0" Width="124" TextAlignment="Center" FontWeight="Bold"/>
 
                 <!-- Hesapla -->
-                <Button Content="Hesapla" Background="Transparent" BorderBrush="Transparent"
-                        Foreground="Blue" FontStyle="Italic"
-                        HorizontalAlignment="Center" VerticalAlignment="Top"
-                        Margin="0,330,0,0" Width="70"
-                        Click="Button_Click"/>
+                <Button Content="Güncelle" Click="Button_Click"
+ Style="{StaticResource AnimatedButtonStyle}" Margin="324,237,327,246" FontWeight="Bold"/>
 
                 <!-- Aile hekimi -->
                 <TextBlock Text="AİLE HEKİMİ&#x0a;Dr. Abdul BAHAR&#x0a;Trabzon Ortahisar 102 Nolu Aile Hekimliği Birimi"
                            HorizontalAlignment="Center" VerticalAlignment="Top"
-                           Margin="0,370,0,0" Width="300" TextAlignment="Center"/>
+                           Margin="0,370,0,0" Width="300" TextAlignment="Center" FontWeight="Bold"/>
 
                 <!-- Aile hekimi değiştir -->
-                <Button Content="Aile Hekimi Değiştir" Background="Transparent" BorderBrush="Transparent"
-                        Foreground="Blue" FontStyle="Italic"
-                        HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                        Margin="0,0,0,10" Width="150" Height="30"
-                        Click="Button_Click"/>
+
+                <Button Content="Hesapla" Click="Button_Click"
+                    Style="{StaticResource AnimatedButtonStyle}" Margin="324,317,327,166" FontWeight="Bold"/>
+                <Button Content="Aile Hekimi Değiştir" Click="Button_Click"
+                    Style="{StaticResource AnimatedButtonStyle}" Margin="325,433,327,50" FontWeight="Bold"/>
+
+
             </Grid>
         </Viewbox>
+        <!-- Sağ Panel -->
 
     </Grid>
 </Window>
