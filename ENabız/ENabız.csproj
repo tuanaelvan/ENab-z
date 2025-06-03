@@ -10,24 +10,62 @@
 
   <ItemGroup>
     <None Remove="0ff27dea30705656455da4bd951281f2.jpg" />
+    <None Remove="123.png" />
+    <None Remove="456.png" />
+    <None Remove="789.png" />
+    <None Remove="anasayfa.png" />
+    <None Remove="asistan.png" />
     <None Remove="back.jpeg.jpg" />
+    <None Remove="doctor-female%402x.png" />
+    <None Remove="epik.png" />
     <None Remove="foto.jpeg.avif" />
     <None Remove="freepik__upload__51298.png" />
     <None Remove="hap.webp" />
+    <None Remove="hasta.png" />
+    <None Remove="mal.png" />
+    <None Remove="pato.png" />
     <None Remove="pink1.png" />
+    <None Remove="pink2.png" />
+    <None Remove="Pink_and_Red_Shapes_Community___Non-Profit_Logo-removebg-preview.png" />
     <None Remove="profile-2398782_1280.png" />
+    <None Remove="radyo.png" />
+    <None Remove="rapor.png" />
+    <None Remove="recete.png" />
+    <None Remove="tahlil.png" />
+    <None Remove="tarama.png" />
+    <None Remove="telemedicine%402x.png" />
     <None Remove="tnabiz.png" />
+    <None Remove="visit.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="0ff27dea30705656455da4bd951281f2.jpg" />
+    <Resource Include="123.png" />
+    <Resource Include="456.png" />
+    <Resource Include="789.png" />
+    <Resource Include="anasayfa.png" />
+    <Resource Include="asistan.png" />
     <Resource Include="back.jpeg.jpg" />
+    <Resource Include="doctor-female@2x.png" />
+    <Resource Include="epik.png" />
     <Resource Include="foto.jpeg.avif" />
     <Resource Include="freepik__upload__51298.png" />
     <Resource Include="hap.webp" />
+    <Resource Include="hasta.png" />
+    <Resource Include="mal.png" />
+    <Resource Include="pato.png" />
     <Resource Include="pink1.png" />
+    <Resource Include="pink2.png" />
+    <Resource Include="Pink_and_Red_Shapes_Community___Non-Profit_Logo-removebg-preview.png" />
     <Resource Include="profile-2398782_1280.png" />
+    <Resource Include="radyo.png" />
+    <Resource Include="rapor.png" />
+    <Resource Include="recete.png" />
+    <Resource Include="tahlil.png" />
+    <Resource Include="tarama.png" />
+    <Resource Include="telemedicine@2x.png" />
     <Resource Include="tnabiz.png" />
+    <Resource Include="visit.png" />
   </ItemGroup>
 
 </Project>
