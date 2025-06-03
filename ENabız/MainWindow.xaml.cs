@@ -24,13 +24,13 @@ namespace ENabız
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LoginFormBox.Visibility = Visibility.Collapsed; // Giriş ekranını gizle
+            //LoginFormBox.Visibility = Visibility.Collapsed; // Giriş ekranını gizle
             //MainFrame.Visibility = Visibility.Visible; // Sayfa göster
            
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            LoginFormBox.Visibility = Visibility.Collapsed;
+            //LoginFormBox.Visibility = Visibility.Collapsed;
             //MainFrame.Visibility = Visibility.Visible;
            
 
