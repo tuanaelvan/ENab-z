@@ -12,23 +12,32 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows;
-using System.Windows.Controls;
-using ENabız;
 
 namespace ENabız
 {
-    public partial class RegisterPage : Window
+    /// <summary>
+    /// Interaction logic for RegisterPage.xaml
+    /// </summary>
+    public partial class RegisterPage : Page
     {
         public RegisterPage()
         {
             InitializeComponent();
         }
 
-        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
     }
 }
-
