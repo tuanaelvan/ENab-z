@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,46 +14,53 @@ namespace ENabız
 
         protected override void OnRender(DrawingContext drawingContext)
         {
-            TextBox textBoxControl = (TextBox)AdornedElement;
+            if (AdornedElement is not TextBox textBoxControl)
+                return;
 
             string placeholderValue = TextBoxHelper.GetPlaceholder(textBoxControl);
-
             if (string.IsNullOrEmpty(placeholderValue))
                 return;
 
-            FormattedText text = new FormattedText(
-                                        placeholderValue,
-                                        System.Globalization.CultureInfo.CurrentCulture,
-                                        textBoxControl.FlowDirection,
-                                        new Typeface(textBoxControl.FontFamily,
-                                                     textBoxControl.FontStyle,
-                                                     textBoxControl.FontWeight,
-                                                     textBoxControl.FontStretch),
-                                        textBoxControl.FontSize,
-                                        SystemColors.InactiveCaptionBrush,
-                                        VisualTreeHelper.GetDpi(textBoxControl).PixelsPerDip);
+            var typeface = new Typeface(
+                textBoxControl.FontFamily,
+                textBoxControl.FontStyle,
+                textBoxControl.FontWeight,
+                textBoxControl.FontStretch
+            );
 
-            text.MaxTextWidth = Math.Max(textBoxControl.ActualWidth - textBoxControl.Padding.Left - textBoxControl.Padding.Right, 10);
-            text.MaxTextHeight = Math.Max(textBoxControl.ActualHeight, 10);
+            var formattedText = new FormattedText(
+                placeholderValue,
+                CultureInfo.CurrentCulture,
+                textBoxControl.FlowDirection,
+                typeface,
+                textBoxControl.FontSize,
+                SystemColors.GrayTextBrush, // Daha okunabilir bir renk
+                VisualTreeHelper.GetDpi(textBoxControl).PixelsPerDip
+            )
+            {
+                MaxTextWidth = Math.Max(textBoxControl.ActualWidth - textBoxControl.Padding.Left - textBoxControl.Padding.Right, 10),
+                MaxTextHeight = Math.Max(textBoxControl.ActualHeight, 10)
+            };
 
-            // Başlangıçta padding'e göre yerleştir
+            // Başlangıç koordinatı
             Point renderingOffset = new Point(textBoxControl.Padding.Left, textBoxControl.Padding.Top);
 
+            // Template üzerinden hizalama ayarı
             if (textBoxControl.Template.FindName("PART_ContentHost", textBoxControl) is FrameworkElement part)
             {
                 Point partPosition = part.TransformToAncestor(textBoxControl).Transform(new Point(0, 0));
                 renderingOffset.X += partPosition.X;
                 renderingOffset.Y += partPosition.Y;
 
-                text.MaxTextWidth = Math.Max(part.ActualWidth - renderingOffset.X, 10);
-                text.MaxTextHeight = Math.Max(part.ActualHeight, 10);
+                formattedText.MaxTextWidth = Math.Max(part.ActualWidth - renderingOffset.X, 10);
+                formattedText.MaxTextHeight = Math.Max(part.ActualHeight, 10);
             }
 
-            // HİZALAMA EKLENDİ: metni ortalamak için x ve y offset ayarlanıyor
-            renderingOffset.X = (textBoxControl.ActualWidth - text.Width) / 2;
-            renderingOffset.Y = (textBoxControl.ActualHeight - text.Height) / 2;
+            // Ortaya hizalama
+            renderingOffset.X = (textBoxControl.ActualWidth - formattedText.Width) / 2;
+            renderingOffset.Y = (textBoxControl.ActualHeight - formattedText.Height) / 2;
 
-            drawingContext.DrawText(text, renderingOffset);
+            drawingContext.DrawText(formattedText, renderingOffset);
         }
     }
 }

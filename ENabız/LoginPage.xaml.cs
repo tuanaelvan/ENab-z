@@ -12,9 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-using System.Windows;
-using System.Windows.Controls;
 using ENabız;
 
 namespace ENabız
@@ -29,15 +26,16 @@ namespace ENabız
         {
 
         }
+       
+        private void OpenRadiologyPage(object sender, MouseButtonEventArgs e)
+        {
+            var window = new RadiologyPage(); // RadiologyPage bir Window
+            window.Show();
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
+            // Örnek event
         }
     }
 }

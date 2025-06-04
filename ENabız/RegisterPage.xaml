@@ -1,23 +1,49 @@
-﻿<Page x:Class="ENabız.RegisterPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:ENabız"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="RegisterPage">
+﻿<Window x:Class="ENabız.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:ENabız"
+        mc:Ignorable="d" 
+        Title="Kayıt Ol" WindowState="Maximized" WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <!-- Arka plan -->
         <Grid.Background>
-            <ImageBrush ImageSource="/pink2.png"/>
+            <ImageBrush ImageSource="/pink2.png" Stretch="UniformToFill"/>
         </Grid.Background>
-        <TextBox HorizontalAlignment="Left" Margin="300,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="35"/>
-        <TextBox HorizontalAlignment="Left" Margin="300,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="35" TextChanged="TextBox_TextChanged"/>
-        <Button Content="İptal" HorizontalAlignment="Left" Margin="300,245,0,0" VerticalAlignment="Top" Height="35" Width="105" Click="Button_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="200,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="17" Width="85"><Run Text="T.C Kimlik "/><Run Language="tr-tr" Text="No"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="200,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="17" Width="40"><Run Language="tr-tr" Text="Şifre"/></TextBlock>
-        <Button Content="Giriş Yap" HorizontalAlignment="Left" Margin="430,245,0,0" VerticalAlignment="Top" Height="35" Width="105" Click="Button_Click_1"/>
 
+        <!-- Ortalanmış içerik kutusu -->
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- T.C. Kimlik -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,10,20,10" VerticalAlignment="Center"
+                       TextWrapping="Wrap" Height="17" Width="85">
+                <Run Text="T.C Kimlik "/><Run Language="tr-tr" Text="No"/>
+            </TextBlock>
+            <TextBox Grid.Row="0" Grid.Column="1" Width="235" Height="35" />
+
+            <!-- Şifre -->
+            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,10,20,10" VerticalAlignment="Center"
+                       TextWrapping="Wrap" Height="17" Width="40">
+                <Run Language="tr-tr" Text="Şifre"/>
+            </TextBlock>
+            <TextBox Grid.Row="1" Grid.Column="1" Width="235" Height="35" TextChanged="TextBox_TextChanged"/>
+
+            <!-- Butonlar -->
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Content="İptal" Width="105" Height="35" Margin="0,0,20,0" Click="Button_Click"/>
+                <Button Content="Giriş Yap" Width="105" Height="35" Click="Button_Click_1"/>
+            </StackPanel>
+        </Grid>
     </Grid>
-</Page>
+</Window>

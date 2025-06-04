@@ -9,7 +9,7 @@ namespace ENabız
     public class TextBoxHelper
     {
         public static string GetPlaceholder(DependencyObject obj) =>
-    (string)obj.GetValue(PlaceholderProperty);
+            (string)obj.GetValue(PlaceholderProperty);
 
         public static void SetPlaceholder(DependencyObject obj, string value) =>
             obj.SetValue(PlaceholderProperty, value);
@@ -22,7 +22,7 @@ namespace ENabız
                 new FrameworkPropertyMetadata(
                     defaultValue: null,
                     propertyChangedCallback: OnPlaceholderChanged)
-                );
+            );
 
         private static void OnPlaceholderChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -30,7 +30,6 @@ namespace ENabız
             {
                 if (!textBoxControl.IsLoaded)
                 {
-                    // Ensure that the events are not added multiple times.
                     textBoxControl.Loaded -= TextBoxControl_Loaded;
                     textBoxControl.Loaded += TextBoxControl_Loaded;
                 }
@@ -38,9 +37,10 @@ namespace ENabız
                 textBoxControl.TextChanged -= TextBoxControl_TextChanged;
                 textBoxControl.TextChanged += TextBoxControl_TextChanged;
 
-                // If the adorner exists, invalidate it to draw the current text
-                if (GetOrCreateAdorner(textBoxControl, out PlaceholderAdorner adorner))
+                if (GetOrCreateAdorner(textBoxControl, out PlaceholderAdorner? adorner) && adorner is not null)
+                {
                     adorner.InvalidateVisual();
+                }
             }
         }
 
@@ -56,34 +56,27 @@ namespace ENabız
         private static void TextBoxControl_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (sender is TextBox textBoxControl
-                && GetOrCreateAdorner(textBoxControl, out PlaceholderAdorner adorner))
+                && GetOrCreateAdorner(textBoxControl, out PlaceholderAdorner? adorner)
+                && adorner is not null)
             {
-                // Control has text. Hide the adorner.
-                if (textBoxControl.Text.Length > 0)
-                    adorner.Visibility = Visibility.Hidden;
-
-                // Control has no text. Show the adorner.
-                else
-                    adorner.Visibility = Visibility.Visible;
+                adorner.Visibility = string.IsNullOrEmpty(textBoxControl.Text)
+                    ? Visibility.Visible
+                    : Visibility.Hidden;
             }
         }
 
-        private static bool GetOrCreateAdorner(TextBox textBoxControl, out PlaceholderAdorner adorner)
+        private static bool GetOrCreateAdorner(TextBox textBoxControl, out PlaceholderAdorner? adorner)
         {
-            // Get the adorner layer
-            AdornerLayer layer = AdornerLayer.GetAdornerLayer(textBoxControl);
+            AdornerLayer? layer = AdornerLayer.GetAdornerLayer(textBoxControl);
 
-            // If null, it doesn't exist or the control's template isn't loaded
             if (layer == null)
             {
                 adorner = null;
                 return false;
             }
 
-            // Layer exists, try to find the adorner
             adorner = layer.GetAdorners(textBoxControl)?.OfType<PlaceholderAdorner>().FirstOrDefault();
 
-            // Adorner never added to control, so add it
             if (adorner == null)
             {
                 adorner = new PlaceholderAdorner(textBoxControl);
@@ -92,9 +85,5 @@ namespace ENabız
 
             return true;
         }
-
-
     }
-
-
 }

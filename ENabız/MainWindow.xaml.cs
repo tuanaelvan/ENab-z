@@ -24,17 +24,30 @@ namespace ENabız
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //LoginFormBox.Visibility = Visibility.Collapsed; // Giriş ekranını gizle
-            //MainFrame.Visibility = Visibility.Visible; // Sayfa göster
-           
+            // RegisterPage zaten Window olduğu için direkt açabiliriz
+            var registerPageWindow = new RegisterPage();
+            registerPageWindow.Show(); // ya da ShowDialog() modally açmak istersen
         }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //LoginFormBox.Visibility = Visibility.Collapsed;
-            //MainFrame.Visibility = Visibility.Visible;
-           
-
+            // LoginPage zaten Window olduğu için direkt açabiliriz
+            var loginPageWindow = new LoginPage();
+            loginPageWindow.Show(); // ya da ShowDialog() modally açmak istersen
         }
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+           
+        }
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
 
         private void MainFrame_Navigated(object sender, NavigationEventArgs e)
         {

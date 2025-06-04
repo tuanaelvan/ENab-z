@@ -1,0 +1,102 @@
+﻿<Window x:Class="ENabız.RadiologyPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:ENabız"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" 
+        Title="Radyoloji Sonuçları" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen" WindowState="Maximized">
+
+    <Grid>
+        <!-- Arka plan resmi -->
+        <Grid.Background>
+            <ImageBrush ImageSource="/freepik__upload__51298.png" Stretch="UniformToFill" Opacity="0.1"/>
+        </Grid.Background>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20">
+
+            <!-- Sayfa başlığı -->
+            <TextBlock Text="Radyoloji Sonuçları"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Margin="0,20,0,10"
+                       Foreground="#333"
+                       HorizontalAlignment="Center"/>
+
+            <Border Background="White"
+                    BorderBrush="#DDD"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Padding="20"
+                    Width="Auto"
+                    MaxWidth="1000"
+                    SnapsToDevicePixels="True">
+
+                <StackPanel>
+
+                    <!-- Arama kutusu -->
+                    <TextBox Margin="0,0,0,15"
+                             Height="30"
+                             Width="300"
+                             Padding="10,0"
+                             FontSize="14"
+                             Foreground="Gray"
+                             Text="🔍 Arama"
+                             HorizontalAlignment="Right"/>
+
+                    <!-- DataGrid -->
+                    <DataGrid SelectionChanged="DataGrid_SelectionChanged_2"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              IsReadOnly="True"
+                              RowHeight="70"
+                              FontSize="14"
+                              AlternatingRowBackground="#F9F9F9"
+                              BorderBrush="#DDD"
+                              HeadersVisibility="Column">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tarih" Width="100" Binding="{Binding}" />
+
+                            <DataGridTemplateColumn Header="Ön İzleme" Width="80">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Width="50" Height="50" Stretch="UniformToFill"
+                                               Source="https://via.placeholder.com/60x60" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="Hastane Adı" Width="200" Binding="{Binding}" />
+                            <DataGridTextColumn Header="Açıklama" Width="250" Binding="{Binding}" />
+                            <DataGridTextColumn Header="Rapor" Width="80" Binding="{Binding}" />
+
+                            <DataGridTemplateColumn Header="Görüntü" Width="120">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="Aç"
+                                                Background="#4DB8FF"
+                                                Foreground="White"
+                                                Padding="4,2"
+                                                FontSize="13"
+                                                BorderThickness="0"
+                                                Cursor="Hand"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                        <!-- Sabit örnek veri -->
+                        <DataGrid.Items>
+                            <sys:String>28.06.2024</sys:String>
+                            <sys:String>21.12.2023</sys:String>
+                        </DataGrid.Items>
+                    </DataGrid>
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

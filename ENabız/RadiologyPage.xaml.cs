@@ -16,28 +16,19 @@ using System.Windows.Shapes;
 namespace ENabız
 {
     /// <summary>
-    /// Interaction logic for RegisterPage.xaml
+    /// Interaction logic for RadiologyPage.xaml
     /// </summary>
-    public partial class RegisterPage : Window
+    public partial class RadiologyPage : Window
     {
-        public RegisterPage()
+        public RadiologyPage()
         {
             InitializeComponent();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void DataGrid_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)   
-        {
-
+            // Seçim olayı için kod yazılabilir
         }
     }
+
 }

@@ -9,15 +9,13 @@
         Title="LoginPage"
         WindowState="Maximized">
 
-    <!-- ─────────────────────────  STİL KAYNAKLARI  ───────────────────────── -->
     <Window.Resources>
-
-        <!-- Yumuşak kenarlı TextBox -->
+        <!-- Rounded TextBox -->
         <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
-            <Setter Property="Background"      Value="White"/>
-            <Setter Property="BorderBrush"     Value="Gray"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="Padding"         Value="6"/>
+            <Setter Property="Padding" Value="6"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -32,7 +30,7 @@
             </Setter>
         </Style>
 
-        <!-- Mouse-over animasyonlu buton -->
+        <!-- Animated Button -->
         <Style x:Key="AnimatedButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="#FFEDCBE1"/>
             <Setter Property="Template">
@@ -47,7 +45,6 @@
                             <ContentPresenter HorizontalAlignment="Center"
                                               VerticalAlignment="Center"/>
                         </Border>
-
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Trigger.EnterActions>
@@ -55,10 +52,10 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="border"
                                                              Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                             To="1.05" Duration="0:0:0.20"/>
+                                                             To="1.05" Duration="0:0:0.2"/>
                                             <DoubleAnimation Storyboard.TargetName="border"
                                                              Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                             To="1.05" Duration="0:0:0.20"/>
+                                                             To="1.05" Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.EnterActions>
@@ -67,10 +64,10 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="border"
                                                              Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                             To="1.0" Duration="0:0:0.20"/>
+                                                             To="1.0" Duration="0:0:0.2"/>
                                             <DoubleAnimation Storyboard.TargetName="border"
                                                              Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                             To="1.0" Duration="0:0:0.20"/>
+                                                             To="1.0" Duration="0:0:0.2"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>
@@ -81,9 +78,9 @@
             </Setter>
         </Style>
 
-        <!-- Hover efekti (logo gibi görseller için) -->
+        <!-- Hoverable Logo -->
         <Style x:Key="HoverableImageStyle" TargetType="Image">
-            <Setter Property="Opacity"               Value="0.15"/>
+            <Setter Property="Opacity" Value="0.15"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="RenderTransform">
                 <Setter.Value>
@@ -101,97 +98,50 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
     </Window.Resources>
-    <!-- ────────────────────────  /STİL KAYNAKLARI  ───────────────────────── -->
 
     <Grid>
-        <!-- Arka plan resmi -->
         <Grid.Background>
-            <ImageBrush ImageSource="/freepik__upload__51298.png"
-                Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/freepik__upload__51298.png" Stretch="UniformToFill"/>
         </Grid.Background>
 
-        <!-- Grid satır ve sütun tanımlamaları -->
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
-            <!-- Üst bar yüksekliği -->
             <RowDefinition Height="6*"/>
             <RowDefinition Height="5*"/>
-            <!-- Geri kalan alan -->
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
-            <!-- Sol menü genişliği -->
             <ColumnDefinition/>
-            <!-- Ana içerik alanı -->
         </Grid.ColumnDefinitions>
 
-        <!-- Üst bar (logo + anasayfa + arama) -->
-        <DockPanel Grid.ColumnSpan="2" VerticalAlignment="Center" Background="White" Height="100" LastChildFill="False">
-
-            <!-- Logo (hover’lı) -->
+        <!-- Üst bar -->
+        <DockPanel Grid.ColumnSpan="2" Background="White" Height="100" VerticalAlignment="Center" LastChildFill="False">
             <Image Source="/Pink_and_Red_Shapes_Community___Non-Profit_Logo-removebg-preview.png"
-           Width="100" Height="100"
-           Style="{StaticResource HoverableImageStyle}"
-           DockPanel.Dock="Left" Opacity="1"/>
-
-            <!-- Anasayfa simgesi -->
-            <Image Source="/anasayfa.png"
-           Width="50" Height="50"
-           Margin="10,0"
-           VerticalAlignment="Center"
-           DockPanel.Dock="Left"/>
-
-            <!-- Arama kutusu + buton -->
-            <StackPanel Orientation="Horizontal"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                DockPanel.Dock="Right"
-                Margin="20,0,0,0">
-                <TextBox Width="300" Height="40"
-                 TextAlignment="Left"
-                 VerticalContentAlignment="Center"
-                 helpers:TextBoxHelper.Placeholder="Merhaba, size nasıl yardım edebilirim?"
-                 Style="{StaticResource RoundedTextBoxStyle}"
-                 Name="SearchBox"/>
-                <Button Content="🔍"
-                 Width="50" Height="40" Margin="10,0,0,0"
-                 Style="{StaticResource AnimatedButtonStyle}"/>
+                   Width="100" Height="100" Style="{StaticResource HoverableImageStyle}" DockPanel.Dock="Left"/>
+            <Image Source="/anasayfa.png" Width="50" Height="50" Margin="10,0" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" DockPanel.Dock="Right" Margin="20,0,0,0">
+                <TextBox Width="300" Height="40" TextAlignment="Left" VerticalContentAlignment="Center"
+                         helpers:TextBoxHelper.Placeholder="Merhaba, size nasıl yardım edebilirim?"
+                         Style="{StaticResource RoundedTextBoxStyle}" Name="SearchBox"/>
+                <Button Content="🔍" Width="50" Height="40" Margin="10,0,0,0" Style="{StaticResource AnimatedButtonStyle}"/>
             </StackPanel>
-
-            <!-- Sağdaki logolu buton -->
-            <Button Width="180" Height="40" Padding="5"
-            DockPanel.Dock="Right"
-            VerticalAlignment="Center"
-            Background="#FFEDCBE1"
-            Foreground="White"
-            FontWeight="Bold"
-            BorderThickness="0"
-            Cursor="Hand">
+            <Button Width="180" Height="40" Padding="5" DockPanel.Dock="Right" Background="#FFEDCBE1"
+                    Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}"
-                        CornerRadius="12"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="12">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Button.Template>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                    <Image Source="/medical-advice.png" Width="24" Height="24" Margin="0,0,10,0">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="/medical-advice.png"/>
-                        </Image.OpacityMask>
-                    </Image>
+                    <Image Source="/medical-advice.png" Width="24" Height="24" Margin="0,0,10,0"/>
                     <TextBlock VerticalAlignment="Center" FontSize="14" Text="T-NABIZ İLETİŞİM&#x0a;0412 345 67 89"/>
                 </StackPanel>
             </Button>
-
         </DockPanel>
-
-
 
         <!-- Sol Menü -->
         <StackPanel Grid.Row="1" Width="220" Background="#F8F9FA" Orientation="Vertical" HorizontalAlignment="Center" Grid.RowSpan="2">
@@ -213,12 +163,9 @@
                         <Setter Property="Foreground" Value="#007ACC"/>
                     </Style>
                 </ItemsControl.Resources>
+
                 <StackPanel>
-                    <Image Source="/asistan.png">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="/asistan.png"/>
-                        </Image.OpacityMask>
-                    </Image>
+                    <Image Source="/asistan.png"/>
                     <TextBlock Text="Akıllı Asistan"/>
                 </StackPanel>
                 <StackPanel>
@@ -226,11 +173,7 @@
                     <TextBlock Text="Ziyaretlerim"/>
                 </StackPanel>
                 <StackPanel>
-                    <Image Source="/recete.png">
-                        <Image.OpacityMask>
-                            <ImageBrush ImageSource="/recete.png"/>
-                        </Image.OpacityMask>
-                    </Image>
+                    <Image Source="/recete.png"/>
                     <TextBlock Text="Reçetelerim"/>
                 </StackPanel>
                 <StackPanel>
@@ -245,10 +188,13 @@
                     <Image Source="/tahlil.png"/>
                     <TextBlock Text="Tahlillerim"/>
                 </StackPanel>
-                <StackPanel>
+
+                <!-- Aktifleşen buton -->
+                <StackPanel MouseDown="OpenRadiologyPage">
                     <Image Source="/radyo.png"/>
                     <TextBlock Text="Radyolojik Görüntülerim"/>
                 </StackPanel>
+
                 <StackPanel>
                     <Image Source="/pato.png"/>
                     <TextBlock Text="Patoloji Bilgilerim"/>
@@ -265,67 +211,38 @@
                     <Image Source="/tarama.png"/>
                     <TextBlock Text="Tarama Verilerim"/>
                 </StackPanel>
+
+                <DockPanel Height="100" LastChildFill="False" Width="100"/>
             </ItemsControl>
         </StackPanel>
-        <!-- Ana içerik -->
+
+        <!-- Profil alanı Viewbox -->
         <Viewbox Grid.Row="1" Grid.Column="1" Stretch="Uniform" Grid.RowSpan="2">
             <Grid Width="800" Height="511">
-
-                <!-- Profil resmi -->
-                <Image Source="/profile-2398782_1280.png"
-                       Width="100" Height="100"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Top"
-                       Margin="0,30,0,0"/>
-
-                <!-- İsim -->
-                <TextBlock Text="TUANA ELVANOĞLU"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Top"
-                           Margin="0,140,0,0"
-                           FontSize="16"
-                           FontWeight="Bold"
-                           TextAlignment="Center"/>
-
-                <!-- Bilgi etiketleri -->
-                <UniformGrid Rows="1" Columns="4"
-                             Margin="150,180,150,0"
-                             VerticalAlignment="Top"
-                             Height="60">
-                    <TextBlock Text="YAŞ&#x0a;21" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="KİLO&#x0a;70 kg" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="BOY&#x0a;165 cm" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
-                    <TextBlock Text="KAN GRUBU&#x0a;0 Rh+" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Image Source="/profile-2398782_1280.png" Width="100" Height="100"
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0"/>
+                <TextBlock Text="TUANA ELVANOĞLU" HorizontalAlignment="Center"
+                           VerticalAlignment="Top" Margin="0,140,0,0"
+                           FontSize="16" FontWeight="Bold" TextAlignment="Center"/>
+                <UniformGrid Rows="1" Columns="4" Margin="150,180,150,0" VerticalAlignment="Top" Height="60">
+                    <TextBlock Text="YAŞ&#x0a;21" TextAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="KİLO&#x0a;70 kg" TextAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="BOY&#x0a;165 cm" TextAlignment="Center" FontWeight="Bold"/>
+                    <TextBlock Text="KAN GRUBU&#x0a;0 Rh+" TextAlignment="Center" FontWeight="Bold"/>
                 </UniformGrid>
-
-                <!-- Güncelle -->
-
-
-                <!-- VKİ -->
                 <TextBlock Text="VÜCUT KİTLE İNDEKSİ&#x0a;25.71"
                            HorizontalAlignment="Center" VerticalAlignment="Top"
                            Margin="0,280,0,0" Width="124" TextAlignment="Center" FontWeight="Bold"/>
-
-                <!-- Hesapla -->
                 <Button Content="Güncelle" Click="Button_Click"
- Style="{StaticResource AnimatedButtonStyle}" Margin="324,237,327,246" FontWeight="Bold"/>
-
-                <!-- Aile hekimi -->
+                        Style="{StaticResource AnimatedButtonStyle}" Margin="324,237,327,246" FontWeight="Bold"/>
                 <TextBlock Text="AİLE HEKİMİ&#x0a;Dr. Abdul BAHAR&#x0a;Trabzon Ortahisar 102 Nolu Aile Hekimliği Birimi"
                            HorizontalAlignment="Center" VerticalAlignment="Top"
                            Margin="0,370,0,0" Width="300" TextAlignment="Center" FontWeight="Bold"/>
-
-                <!-- Aile hekimi değiştir -->
-
                 <Button Content="Hesapla" Click="Button_Click"
-                    Style="{StaticResource AnimatedButtonStyle}" Margin="324,317,327,166" FontWeight="Bold"/>
+                        Style="{StaticResource AnimatedButtonStyle}" Margin="324,317,327,166" FontWeight="Bold"/>
                 <Button Content="Aile Hekimi Değiştir" Click="Button_Click"
-                    Style="{StaticResource AnimatedButtonStyle}" Margin="325,433,327,50" FontWeight="Bold"/>
-
-
+                        Style="{StaticResource AnimatedButtonStyle}" Margin="325,433,327,50" FontWeight="Bold"/>
             </Grid>
         </Viewbox>
-        <!-- Sağ Panel -->
-
     </Grid>
 </Window>
