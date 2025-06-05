@@ -5,17 +5,95 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:ENabız"
         mc:Ignorable="d" 
-        Title="Kayıt Ol" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Kıyat Ol" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!-- Yumuşatılmış TextBox stili -->
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10">
+                            <ScrollViewer x:Name="PART_ContentHost" Margin="0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Animasyonlu Buton Stili -->
+        <Style x:Key="AnimatedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FFEDCBE1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="12">
+                            <Border.RenderTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Border.RenderTransform>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="border"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="1.05" Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="border"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="1.05" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="border"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                             To="1.0" Duration="0:0:0.2"/>
+                                            <DoubleAnimation Storyboard.TargetName="border"
+                                                             Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                             To="1.0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid>
-        <!-- Arka plan -->
         <Grid.Background>
-            <ImageBrush ImageSource="/pink2.png" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/pink2.png" Stretch="Fill"/>
         </Grid.Background>
+        <Image Source="/Pink_and_Red_Shapes_Community___Non-Profit_Logo-removebg-preview.png"
+       HorizontalAlignment="Center" VerticalAlignment="Center"
+       Stretch="Uniform"
+       Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Window}}"
+       Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=Window}}"
+       Opacity="0.15" />
 
-        <!-- Ortalanmış içerik kutusu -->
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -25,24 +103,38 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <!-- T.C. Kimlik -->
-            <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,10,20,10" VerticalAlignment="Center"
-                       TextWrapping="Wrap" Height="17" Width="85">
-                <Run Text="T.C Kimlik "/><Run Language="tr-tr" Text="No"/>
-            </TextBlock>
-            <TextBox Grid.Row="0" Grid.Column="1" Width="235" Height="35" />
+            <!-- TC Kimlik -->
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="T.C Kimlik No:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="0" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}" Grid.ColumnSpan="2" Margin="107,0,0,1"/>
 
             <!-- Şifre -->
-            <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,10,20,10" VerticalAlignment="Center"
-                       TextWrapping="Wrap" Height="17" Width="40">
-                <Run Language="tr-tr" Text="Şifre"/>
-            </TextBlock>
-            <TextBox Grid.Row="1" Grid.Column="1" Width="235" Height="35" TextChanged="TextBox_TextChanged"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Şifre:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Ad Soyad -->
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Ad Soyad:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Yaş -->
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Yaş:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="3" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Kilo -->
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="Kilo:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Boy -->
+            <TextBlock Grid.Row="5" Grid.Column="0" Text="Boy:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
+
+            <!-- Kan Grubu -->
+            <TextBlock Grid.Row="6" Grid.Column="0" Text="Kan Grubu:" Margin="0,10,20,10"/>
+            <TextBox Grid.Row="6" Grid.Column="1" Width="300" Height="35" Style="{StaticResource RoundedTextBoxStyle}"/>
 
             <!-- Butonlar -->
-            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-                <Button Content="İptal" Width="105" Height="35" Margin="0,0,20,0" Click="Button_Click"/>
-                <Button Content="Giriş Yap" Width="105" Height="35" Click="Button_Click_1"/>
+            <StackPanel Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+                <Button Content="İptal" Width="200" Height="50" Margin="0,0,20,0" Style="{StaticResource AnimatedButtonStyle}" Click="Button_Click"/>
+                <Button Content="Giriş Yap" Width="200" Height="50" Style="{StaticResource AnimatedButtonStyle}" Click="Button_Click_1"/>
             </StackPanel>
         </Grid>
     </Grid>

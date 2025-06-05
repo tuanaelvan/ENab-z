@@ -35,9 +35,11 @@ namespace ENabız
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)   
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            var nextPage = new MainWindow(); // örnek hedef pencere
+            nextPage.Show();
+            this.Close();
         }
     }
 }
