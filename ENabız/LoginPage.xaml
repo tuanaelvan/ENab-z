@@ -104,7 +104,6 @@
         <Grid.Background>
             <ImageBrush ImageSource="/freepik__upload__51298.png" Stretch="UniformToFill"/>
         </Grid.Background>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="6*"/>

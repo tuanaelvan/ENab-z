@@ -4,99 +4,178 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:ENabız"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" 
         Title="Radyoloji Sonuçları" Height="600" Width="1000"
         WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Grid>
-        <!-- Arka plan resmi -->
         <Grid.Background>
             <ImageBrush ImageSource="/freepik__upload__51298.png" Stretch="UniformToFill" Opacity="0.1"/>
         </Grid.Background>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20">
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <!-- Sayfa başlığı -->
-            <TextBlock Text="Radyoloji Sonuçları"
-                       FontSize="24"
-                       FontWeight="Bold"
-                       Margin="0,20,0,10"
-                       Foreground="#333"
-                       HorizontalAlignment="Center"/>
+            <TextBlock Grid.Row="0" Text="Radyoloji Sonuçları"
+                       FontSize="28" FontWeight="Bold" Margin="0,20,0,10"
+                       Foreground="#333" HorizontalAlignment="Center"/>
 
-            <Border Background="White"
-                    BorderBrush="#DDD"
-                    BorderThickness="1"
-                    CornerRadius="10"
-                    Padding="20"
-                    Width="Auto"
-                    MaxWidth="1000"
-                    SnapsToDevicePixels="True">
+            <TextBox Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,0,10"
+                     Width="300" Height="30" Padding="10,0" FontSize="14"
+                     Foreground="Gray" Text="🔍 Arama"/>
 
-                <StackPanel>
+            <DataGrid x:Name="RadiologyDataGrid"
+                      Grid.Row="2" HorizontalAlignment="Center"
+                      MaxWidth="2000" AutoGenerateColumns="False"
+                      CanUserAddRows="False" IsReadOnly="True"
+                      RowHeight="70" FontSize="14"
+                      AlternatingRowBackground="#F9F9F9"
+                      BorderBrush="#DDD" HeadersVisibility="Column">
 
-                    <!-- Arama kutusu -->
-                    <TextBox Margin="0,0,0,15"
-                             Height="30"
-                             Width="300"
-                             Padding="10,0"
-                             FontSize="14"
-                             Foreground="Gray"
-                             Text="🔍 Arama"
-                             HorizontalAlignment="Right"/>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Tarih"
+                    Width="100"
+                    Binding="{Binding Tarih}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
-                    <!-- DataGrid -->
-                    <DataGrid SelectionChanged="DataGrid_SelectionChanged_2"
-                              AutoGenerateColumns="False"
-                              CanUserAddRows="False"
-                              IsReadOnly="True"
-                              RowHeight="70"
-                              FontSize="14"
-                              AlternatingRowBackground="#F9F9F9"
-                              BorderBrush="#DDD"
-                              HeadersVisibility="Column">
+                    <DataGridTemplateColumn Header="Ön İzleme" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="50" Height="50" Stretch="UniformToFill" Source="{Binding OnIzleme}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Tarih" Width="100" Binding="{Binding}" />
+                    <DataGridTextColumn Header="Hastane Adı" Width="Auto" Binding="{Binding HastaneAdi}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
-                            <DataGridTemplateColumn Header="Ön İzleme" Width="80">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Image Width="50" Height="50" Stretch="UniformToFill"
-                                               Source="https://via.placeholder.com/60x60" />
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Açıklama" Width="Auto" Binding="{Binding Aciklama}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
-                            <DataGridTextColumn Header="Hastane Adı" Width="200" Binding="{Binding}" />
-                            <DataGridTextColumn Header="Açıklama" Width="250" Binding="{Binding}" />
-                            <DataGridTextColumn Header="Rapor" Width="80" Binding="{Binding}" />
+                    <DataGridTextColumn Header="Rapor" Width="80" Binding="{Binding Rapor}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center"/>
+                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
 
-                            <DataGridTemplateColumn Header="Görüntü" Width="120">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Button Content="Aç"
-                                                Background="#4DB8FF"
-                                                Foreground="White"
-                                                Padding="4,2"
-                                                FontSize="13"
-                                                BorderThickness="0"
-                                                Cursor="Hand"/>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Radyolojik Görüntüler" Width="180">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Görüntüyü Aç" Width="120" Height="26" FontSize="12" Cursor="Hand"
+                                        Background="#4DB8FF" Foreground="White" BorderThickness="0">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Paylaş" Width="180">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="E-Posta Gönder" Width="120" Height="26" FontSize="12" Cursor="Hand"
+                                        Background="#FF6FA3EF" Foreground="White" BorderThickness="0">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="" Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Profilimde Görünmesin" Width="150" Height="26" FontSize="12" Cursor="Hand"
+                                        Background="#7CB342" Foreground="White" BorderThickness="0">
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="8">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
 
-                        <!-- Sabit örnek veri -->
-                        <DataGrid.Items>
-                            <sys:String>28.06.2024</sys:String>
-                            <sys:String>21.12.2023</sys:String>
-                        </DataGrid.Items>
-                    </DataGrid>
+            <!-- Sayfalama Kontrolleri -->
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Center">
+                <TextBlock Text="Sayfada" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <ComboBox Width="60" SelectedIndex="0" VerticalAlignment="Center" Margin="0,0,5,0">
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="25"/>
+                    <ComboBoxItem Content="50"/>
+                    <ComboBoxItem Content="100"/>
+                </ComboBox>
+                <TextBlock Text="kayıt göster" VerticalAlignment="Center" Margin="5,0,20,0"/>
 
-                </StackPanel>
-            </Border>
-        </StackPanel>
+                <Button Content="İlk" Margin="5,0" Padding="10,4" />
+                <Button Content="Önceki" Margin="5,0" Padding="10,4"/>
+                <Button Content="1" Background="#4DB8FF" Foreground="White" Margin="5,0" Padding="10,4"/>
+                <Button Content="Sonraki" Margin="5,0" Padding="10,4"/>
+                <Button Content="Son" Margin="5,0" Padding="10,4"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

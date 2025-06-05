@@ -24,6 +24,8 @@
     <None Remove="hasta.png" />
     <None Remove="mal.png" />
     <None Remove="medical-advice.png" />
+    <None Remove="mr.jpg" />
+    <None Remove="mrornekleri\mr.jpg" />
     <None Remove="pato.png" />
     <None Remove="pink1.png" />
     <None Remove="pink2.png" />
